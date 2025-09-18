@@ -1,0 +1,60 @@
+# TrapScan 🔒
+
+TrapScan is a **Python CLI phishing detection tool** that scans URLs and emails, checks against a blacklist (`blacklist.txt`), applies simple heuristics, logs results in an SQLite database, and generates PDF reports.
+
+---
+
+## Features
+- Detect **Malicious / Suspicious / Safe** inputs
+- Blacklist-based detection (`blacklist.txt` in project root)
+- Auto-add high-risk domains to the blacklist
+- Store scan history in `trapscan.db`
+- Generate professional **PDF reports**
+
+---
+
+## Project Structure
+project/
+├── trapscan.py # Main script
+├── detect.py # Detection logic
+├── db.py # SQLite database handling
+├── report.py # PDF report generator
+├── blacklist.txt # Blacklist file (one domain per line)
+└── trapscan.db # Auto-created SQLite DB
+
+
+---
+
+## Setup & Usage
+
+1. Clone repo & go inside folder:
+```bash
+git clone https://github.com/rohit0472/TrapScan.git
+cd TrapScan
+
+Install dependency:
+
+pip install fpdf
+
+Run scans:
+
+# Scan a single URL
+python3 trapscan.py www.example.com
+
+# Scan an email
+python3 trapscan.py user@example.com
+
+# Scan multiple inputs from file & export PDF
+python3 trapscan.py -f input.txt --pdf
+
+Blacklist Format
+
+Place blacklist.txt in the project root (not inside a folder).
+
+One domain per line. Example:
+
+example.com
+phishingsite.net
+maliciousdomain.org
+paypal-login-secure.com
+free-gift2024.com
